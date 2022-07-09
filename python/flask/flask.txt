@@ -1,0 +1,43 @@
+
+install python3 and pip3 
+
+install virtual environment  
+
+pip3 install virtualenv
+
+install in the project folder 
+virtualenv env 
+
+
+
+- activate it 
+
+mac/linux :  source env/bin/activate 
+windows : \env\Scripts\activate.bat 
+
+
+install flask and sql Alchemy in the env folder
+------------
+(env) pip3 install flask flask-sqlalchemy 
+
+
+
+
+.env file
+-------------------------------
+pip3 install -U python-dotenv
+
+
+
+
+---
+activate again
+run python3
+
+from app import db
+db.create_all()
+
+
+
+
+
