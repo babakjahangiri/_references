@@ -4,7 +4,7 @@
 
 - #### an interface to the on-line reference manuals
 
-#### syntax
+#### syntx
 
 `man <command name>`
 
