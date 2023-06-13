@@ -1,0 +1,6 @@
+--- Create a Custome Role
+gcloud iam roles create customRoleName --project=your-project-id --title="Custom Role Title" --description="Custom Role Description" --permissions=appmetadata.records.get
+
+
+--- Grant the custom role to the user or service account : 
+gcloud projects add-iam-policy-binding your-project-id --member=user:user@example.com --role=projects/your-project-id/roles/customRoleName
