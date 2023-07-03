@@ -4,3 +4,11 @@ gcloud iam roles create customRoleName --project=your-project-id --title="Custom
 
 --- Grant the custom role to the user or service account : 
 gcloud projects add-iam-policy-binding your-project-id --member=user:user@example.com --role=projects/your-project-id/roles/customRoleName
+
+
+--- Get IAM policy and save it to the json file
+gcloud projects get-iam-policy [SOURCE_PROJECT_ID] --member=[PRINCIPAL_ID] --format=json > iam_policy.json
+
+--Set IAM policy to the project
+gcloud projects set-iam-policy [DESTINATION_PROJECT_ID] iam_policy.json  
+
