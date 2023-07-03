@@ -2,11 +2,11 @@
 
 ## Index
 
-1. [shell commands](shell-commands/)
+1. [shell commands](shell/)
 
-2. [sql commands](sql-commands/)
+2. [sql commands](sql/)
 
-3. docker commands
+3. [docker commands](docker/)
 
 4. [MySql commands](mysql-commands.MD)
 
