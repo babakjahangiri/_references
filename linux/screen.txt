@@ -1,0 +1,4 @@
+screen -ls  :list screen 
+screen -R  [TAG NAME OR PID] :enter screen 
+ctrl+A & D  : Exit Screen 
+ctrl+D : kill screen 
