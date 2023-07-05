@@ -1,0 +1,18 @@
+#instructior record
+
+name: Kim Morllain
+job: Technical Developer
+Location: Cologne,Germany
+courses:
+  - Learning Kubernetes
+  - Kubernetes Package Management with Helm
+jobs:
+  DigitalOcean: 1.25
+  FairWinds: 3.28
+  Galvanize: 3
+  titles:
+    - Digital Assistant
+    - Web Developer Instructor
+    - Industrial Engineer
+# use yaml checker.com to validate the YAML file
+

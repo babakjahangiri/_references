@@ -1,0 +1,14 @@
+
+kubectl get namespace
+kubectl get ns 
+
+
+
+kubectl apply -f namespaces1.yaml
+kubectl delete -f namespaces1.yaml
+
+
+# get all all deployment(kind) in development namespace
+kubectl get deployments -n development 
+
+

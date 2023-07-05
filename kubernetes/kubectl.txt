@@ -1,0 +1,23 @@
+
+
+kubectl cluster-info    #give us cluster information
+
+kubectl cluster-info dump   #to further debug and diagnose cluster problems 
+
+kubectl get nodes
+
+kubectl get namespaces  #isolate and manage application and services
+
+kubectl get nodes -A  #got pods information in every name spaces
+
+kubectl get services -A #got services information (act as loadbalancer within cluster and direct traffic to pods)
+
+
+
+
+
+
+
+
+
+

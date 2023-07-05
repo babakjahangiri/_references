@@ -1,0 +1,17 @@
+- start minikube & create a cluster from the scratch
+minikube start
+
+-minikube version check
+minikube update-check
+
+
+minikube stop
+
+-delete a cluster
+minikube delete
+
+
+minikube restart
+
+minikube restart-check
+

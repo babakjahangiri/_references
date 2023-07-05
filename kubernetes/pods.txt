@@ -1,0 +1,22 @@
+
+
+#get pods in the default namespace
+kubectl get pods 
+
+#get number of pods in a namespace
+kubectl get pods -n [namespace]
+kubectl get pods -n development
+
+
+kubectl delete pod [pod-name] -n [namespace]
+
+
+#get info about a pod
+kubectl describe pod [pod-name] -n [namespace]
+
+
+#shows wide information about pods include IP and node and .. 
+kubectl get pods -n [namespace] -o wide 
+
+#access to excutable shell inside a pod
+kubectl exec -it [pods-name] -- bin/sh
