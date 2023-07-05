@@ -20,7 +20,7 @@ spec:
         - name: quote-container
           image: datawire/quote:0.5.0
           ports:
-            - containerPort: 3000
+            - containerPort: 8080
           env:
             - name: POD_NAME
               valueFrom:

@@ -19,6 +19,13 @@ spec:
       containers:
         - name: pod-info-container
           image: kimschles/pod-info-app:latest
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
           ports:
             - containerPort: 3000
           env:
