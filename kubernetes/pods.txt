@@ -20,3 +20,16 @@ kubectl get pods -n [namespace] -o wide
 
 #access to excutable shell inside a pod
 kubectl exec -it [pods-name] -- bin/sh
+
+
+#delete resources inside a file
+kubectl delete -f [filename].yaml
+
+
+check version of pod 
+------------------------
+kubectl exec  [pod-id] -- nginx -v
+
+
+
+

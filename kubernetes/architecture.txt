@@ -1,0 +1,54 @@
+
+
+ Control Plane
+===============
+  Worker Node
+
+
+Kubernetes API ====O Rest Interface
+CLI Tools ====
+*kubectl
+*kubeadm 
+
+
+
+pods,deployment,horizontal pos ===> API Endpoints
+
+
+---------------------------- Kubernetes Cluster --------------------------------
+
+cm  ---------
+            |
+etcd ----- API -------------- CCM ----------------- Cloud Provider API
+            |
+sched -------
+            |
+    =========
+    | Node  |
+    |_______|
+    |kublet |
+    |runtime|
+    |k-proxy|----- communicate with ------> Kube Api Server
+    =========
+
+
+Sched : Scheduler : sched
+Cm : Controller Manaer
+Ccm : Cloud Controller Manager
+etcd : data about state of cluster
+
+#see all Kubernetes objects
+kubectl api-resources
+
+#get system pods
+kubectl get pods -n kube-system
+
+
+#find etcd most recent operation
+kubectl logs etcd-minikube -n kube-system | jq .
+
+
+
+
+In Manage Kubernetes Service like AWS EKS, Google GKE, Control plane nodes are hidden. 
+

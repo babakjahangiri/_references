@@ -1,0 +1,12 @@
+
+type of Kubernetes services
+================================================================
+
+1. loadbalancer
+2. NodePort
+3. ClusterIP
+
+
+#get all services in a namespace
+kubectl get services -n [namespaces-name]
+

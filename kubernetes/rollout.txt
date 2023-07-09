@@ -1,0 +1,5 @@
+kubectl rollout undo 
+
+
+# Rollback to the previous deployment
+kubectl rollout undo deployment/abc

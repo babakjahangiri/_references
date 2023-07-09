@@ -1,0 +1,16 @@
+How Explain Commands works 
+--------------------------------
+
+
+# list of the available API resources 
+#(also known as Kubernetes objects or types) 
+
+kubectl api-resources
+
+
+kubectl explain pod
+kubectl explain pod.spec
+kubectl explain pod.spec.container
+
+
+

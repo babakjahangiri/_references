@@ -1,0 +1,25 @@
+Kubernetes Security Best Practices
+================================================================
+
+
+Hacker wants :
+=================
+Steal data
+Mining Cyrpto
+DDoS Attack
+
+
+
+Add Security Context to your pods
+-----------------------------------
+1. Ensure container run as non-root
+2. Make sure your container file system is read-only
+
+
+
+test kubernetes yaml file with Snyk
+------------------------------------
+snyk iac test deployment.yaml
+
+
+
