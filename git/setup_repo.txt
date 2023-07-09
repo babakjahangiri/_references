@@ -1,0 +1,21 @@
+#clone a branch
+git clone git@ ...
+
+----------------------------------------------------------------
+# track all remote branches:
+git branch -r | grep -v '\->' | while read remote; do git branch --track "${remote#origin/}" "$remote"; done
+# update all local copies of remote branches
+git fetch --all
+# update all local tracking branches
+git pull --all
+
+
+------------------------------------------------------------------------------------------------
+
+To list remote branches:
+
+git branch -r
+You can check them out as local branches with:
+
+git checkout -b LocalName origin/remotebranchname
+
