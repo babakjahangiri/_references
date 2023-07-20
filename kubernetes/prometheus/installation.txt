@@ -1,0 +1,19 @@
+installation prometheus community
+================================
+INSTALL helm
+
+*** Add prometheus repository
+$ helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+
+*** Install provided Helm chart for Prometheus
+$ helm install prometheus prometheus-community/prometheus
+
+***  Expose the prometheus-server service via NodePort
+kubectl expose service prometheus-server --type=NodePort --target-port=9090 --name=prometheus-server-np
+
+*** check service
+kubectl get svc
+
+
+*** Expose service URL:
+minikube service prometheus-server-np --url

@@ -52,3 +52,15 @@ kubectl logs etcd-minikube -n kube-system | jq .
 
 In Manage Kubernetes Service like AWS EKS, Google GKE, Control plane nodes are hidden. 
 
+
+
+Installation
+================================
+sudo apt/dnf install kubeadm kubelet kubectl kubernetes-cni 
+
+
+*** initialization the kubernetes cluster ***
+
+sudo kubeadm init
+
+

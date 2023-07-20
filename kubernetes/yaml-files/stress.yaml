@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stress-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: stress-app
+  template:
+    metadata:
+      labels:
+        app: stress-app
+    spec:
+      containers:
+      - name: stress-container
+        image: progrium/stress
+        args:
+        - "-c"
+        - "2"
