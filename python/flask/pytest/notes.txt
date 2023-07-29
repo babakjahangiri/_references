@@ -1,0 +1,5 @@
+-s : set the capture method to no
+-m :runs test that are market with a certain string.
+--pdb : run the debugger when an error is encountered
+--lf : run only the test that failed on the last attempt
+-v : make pytest verbose 
