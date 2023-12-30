@@ -1,0 +1,39 @@
+--- create essentiall directories ---- 
+ sudo mkdir /etc/nginx/sites-available
+ sudo mkdir /etc/nginx/sites-enabled
+ 
+
+main configurtion file :  /etc/nginx/nginx.conf
+
+Add the following line to the http block (if it's not already there): 
+
+include /etc/nginx/sites-enabled/*;.
+
+create a symbolic in the sites-enabled directory
+ $ sudo ln -s /etc/nginx/sites-available/your-config /etc/nginx/sites-enabled/
+
+- to test configuration
+ $ sudo nginx -t
+
+-reload nginx service 
+ $ sudo systemctl reload nginx
+
+sample of server block in site available directory
+
+
+----------- example.com.conf -----------------
+
+server {
+    listen 80;
+    server_name example.com www.example.com;
+
+    root /var/www/example.com/html;
+    index index.html index.htm index.nginx-debian.html;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    # Additional configurations (like error pages, location blocks) can be added here.
+}
+
