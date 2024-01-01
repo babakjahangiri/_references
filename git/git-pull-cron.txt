@@ -1,0 +1,50 @@
+to have a cron job that automate pulling from the gitlab or github repositories every minute
+
+Step 1 :
+---------
+make a git_pull_script.sh and save it into the 
+/usr/local/bin/
+
+do not forget to make it executable !
+chmod +x ~/git_pull_script.sh
+
+
+Step 2 :
+---------
+edit crontab
+
+ crontab -e
+
+
+add to the crontab
+
+* * * * * /bin/bash /home/yourusername/git_pull_script.sh >> /var/log/git_pull_log.txt 2>&1
+
+* * * * * /path/to/your/script.sh >> /path/to/logfile.txt 2>&1
+
+
+
+* * * * * /bin/bash /usr/local/bin/scripts/git-pull-jcommerce-api.sh >> /var/log/gitpull_jcommrce-api.log 2>&1
+
+
+-- check user have permisison to write a log file 
+
+touch /var/log/gitpull_jcommrce-api.log
+chmod 664 /var/log/gitpull_jcommrce-api.log
+
+
+---------------
+sudo chown user1 /var/log/gitpull_jcommrce-api.log
+
+
+
+
+Install keychain (if it's not already installed).
+
+Configure your script to use keychain to find and use the running ssh-agent:
+
+#!/bin/bash
+eval $(keychain --eval --agents ssh id_rsa)
+# Rest of your script
+
+
