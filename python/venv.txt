@@ -1,0 +1,15 @@
+-- make venv
+python3 -m venv myenv
+
+-- activate it 
+source myenv/bin/activate
+
+
+-- deactivate it
+deactivate
+
+-- findout which envrinment already activated
+echo $VIRTUAL_ENV
+
+
+
