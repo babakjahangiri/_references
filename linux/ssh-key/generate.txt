@@ -1,0 +1,27 @@
+# make a ssh key pair
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+
+
+# run the agent and add your key to it 
+
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/your_private_key
+
+
+#Test SSH Connection to GitLab:
+
+ssh -T git@gitlab.com
+
+
+
+Automating SSH Agent on Login:
+You can add the SSH agent startup command to your shell's startup file, such as ~/.bashrc, ~/.bash_profile, or ~/.zshrc, depending on which shell you use.
+
+Edit your shell's startup file: (~/.bashrc` and ~/.zshrc)
+
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/your_private_key
+
+
+
+

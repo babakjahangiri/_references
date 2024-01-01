@@ -1,0 +1,24 @@
+Using Keychain:
+Keychain is a manager for SSH keys that can help automate the process of loading keys into the SSH agent.
+
+Install Keychain:
+
+sudo apt-get install keychain  # For Debian/Ubuntu
+sudo yum install keychain      # For CentOS/RHEL
+
+
+Add Keychain to your startup file as mentioned above, with:
+
+/usr/bin/keychain --nogui $HOME/.ssh/your_private_key
+source $HOME/.keychain/$HOSTNAME-sh
+
+
+use keychain for cronjobs 
+-----------------------------
+
+#!/bin/bash
+eval $(keychain --eval --agents ssh --quiet id_rsa)
+# Rest of your script
+
+
+
