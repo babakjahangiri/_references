@@ -1,0 +1,44 @@
+
+https://docs.aws.amazon.com/linux/al2023/ug/default-SELinux-modes-states.html
+
+https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/using_selinux/getting-started-with-selinux_using-selinux#benefits-of-selinux_getting-started-with-selinux
+
+
+
+0 permissive 
+1 enforcing
+
+
+sestatus
+
+getenforce 
+
+setenforce 0  -> permissive mode : all services would be worked 
+
+---------
+
+When you run SELinux in permissive mode, SELinux policy isn’t enforced. In permissive mode, SELinux logs AVC messages but doesn’t deny operations. You can use these AVC messages for troubleshooting, debugging, and SELinux policy improvements.
+
+Edit the /etc/selinux/config file to change to permissive mode. The SELINUX value should look like the example.
+
+
+SELINUX=permissive
+Restart your system to complete the change to permissive mode.
+
+
+sudo reboot
+
+
+------------------
+- create an SELinux policy module
+seinfo --type=servicename_t
+
+chcon -t servicename_t /path/to/your/servicename.service
+
+chcon is the command used to change the SELinux context of a file or directory.
+-t indicates that you are specifying the type component of the SELinux context.
+servicename_content_t is an SELinux type often used for files that should be accessible by the Apache HTTP Server (httpd). Setting this type on a file or directory indicates that it should be treated as standard Apache content.
+When you run chcon -t servicename_content_t /path/to/service/files, you are changing the SELinux type of /path/to/service/files to servicename_content_t, which typically allows the Apache web server to read and serve these files according to SELinux policies.
+
+
+
