@@ -1,0 +1,38 @@
+variables:
+    AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+    AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+    AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION
+    DOCKER_REGISTERY: 612190425465.dkr.ecr.eu-west-1.amazonaws.com
+    AWS_CLI_IMAGE: babakuk/alpine-awscli:3.19-arm64
+    REOISITORY_NAME: jooyak-dev
+    DOCKER_HOST: tcp://docker:2375
+
+
+stages:
+  - build
+  - deploy
+
+
+deploy_to_ecr:
+  stage: deploy
+  image: $AWS_CLI_IMAGE
+  script:
+    - apk update && apk add zip
+    - aws --version
+    - aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
+    - aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
+    - aws configure set default.region $AWS_DEFAULT_REGION
+  only:
+    - ci
+
+publish:
+  stage: build
+  image: docker:latest
+  services:
+    - docker:dind
+  before_script:
+    - docker --version
+  script:
+    - docker build -t $DOCKER_REGISTRY/$APP_NAME:$CI_PIPELINE_IID .
+    - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $DOCKER_REGISTRY
+    - docker push $DOCKER_REGISTRY/$APP_NAME:$CI_PIPELINE_IID

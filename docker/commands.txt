@@ -1,0 +1,3 @@
+Run Docker container 
+
+docker run -d  --env-file /home/ec2/.env -p 5050:8080 <aws id>.dkr.ecr.eu-west-1.amazonaws.com/<app_name>:dev-latest

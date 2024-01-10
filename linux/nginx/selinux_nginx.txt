@@ -1,0 +1,31 @@
+If you're encountering a "502 Bad Gateway" error from Nginx and suspect that SELinux is involved 
+(especially if you previously saw "Permission denied" errors in your logs), it's likely that SELinux 
+is preventing Nginx from communicating with your upstream service (like a PHP-FPM pool, a Node.js app, etc.).
+This can happen when the SELinux policies are not configured to allow Nginx to make network connections or access
+certain files. Here's how to diagnose and resolve this issue:
+
+
+
+
+ > Check and Interpret SELinux Audit Logs
+  $ sudo grep nginx /var/log/audit/audit.log | audit2why
+
+
+
+- Restore Default Contexts
+   If you've changed the SELinux contexts for files/directories 
+   that Nginx needs to access, restore the default contexts:
+
+$ sudo restorecon -Rv /path/to/nginx/directory
+
+
+
+- Change SELinux Booleans:
+   SELinux has a set of toggleable booleans that can adjust its
+   behavior without creating a new policy. 
+
+$ sudo setsebool -P httpd_can_network_connect 1
+$ sudo setsebool -P httpd_read_user_content 1
+
+
+

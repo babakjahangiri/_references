@@ -37,3 +37,8 @@ server {
     # Additional configurations (like error pages, location blocks) can be added here.
 }
 
+
+
+
+- check Nginx Error Logs 
+ $ tail -f /var/log/nginx/error.log

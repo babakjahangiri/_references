@@ -1,0 +1,16 @@
+docker images --digests
+
+aws ecr describe-images --repository-name [REPOSITORY_NAME]
+
+
+----------------------------------------------------------------
+
+aws ecr describe-images --repository-name jcommerce_api | jq '.imageDetails[] | select(.imageTags[] == "dev-latest")'
+
+aws ecr describe-images --repository-name jcommerce_api | jq -r '.imageDetails[] | select(.imageTags? and .imageTags[] == "dev-latest") | .imageDigest'
+aws ecr describe-images --repository-name jcommerce_api | jq -r '[.imageDetails[] | select(.imageTags? and .imageTags[] == "dev-latest")] | sort_by(.imagePushedAt) | .[-1] | .imageDigest'
+
+
+docker images --digests
+
+

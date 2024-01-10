@@ -1,4 +1,9 @@
 
+Identify Required Policy Changes:
+ Check the SELinux logs to find out what was being blocked. 
+ Logs are usually located in /var/log/audit/audit.log
+
+
 https://docs.aws.amazon.com/linux/al2023/ug/default-SELinux-modes-states.html
 
 https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/using_selinux/getting-started-with-selinux_using-selinux#benefits-of-selinux_getting-started-with-selinux
