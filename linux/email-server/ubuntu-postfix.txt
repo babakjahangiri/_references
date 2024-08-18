@@ -1,0 +1,47 @@
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt install mailutils postfix
+ 
+sudo hostnamectl set-hostname mail.example.com
+
+sudo nano /etc/postfix/main.cf
+
+set -> inet_interfaces loopback-only
+
+sudo systemctl restart postfix
+
+
+check postfix logs
+sudo tail -f /var/log/mail.log
+
+
+
+
+Configure SASL Authentication 
+----------------------------------
+sudo apt-get install libsasl2-2 libsasl2-modules
+
+
+
+* if you need to manage SASL authentication or use additional SASL features, you might want to install it as well:
+
+sudo apt-get install sasl2-bin
+
+
+smtpd_sasl_auth_enable = yes
+smtpd_sasl_security_options = noanonymous
+smtpd_sasl_local_domain = $myhostname
+smtpd_recipient_restrictions = permit_sasl_authenticated, reject_unauth_destination
+smtp_sasl_auth_enable = yes
+smtp_sasl_security_options = noanonymous
+smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd
+smtp_use_tls = yes
+smtp_tls_security_level = encrypt
+smtp_tls_note_starttls_offer = yes
+
+
+----
+sudo chmod 600 /etc/postfix/sasl_passwd
+
+
+sudo systemctl restart postfix
