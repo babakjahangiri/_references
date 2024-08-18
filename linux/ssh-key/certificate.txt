@@ -1,0 +1,39 @@
+create RSA:2048 Cert 
+======================
+
+openssl req -new -newkey rsa:2048 -nodes -keyout mysite.key -out mysite.csr
+
+to view it 
+----------
+openssl req -text -noout -in mysite.csr
+openssl pkey -text -noout -in mysite.key
+
+
+
+
+------------
+Combine Certificate Files
+For Postfix, you need to concatenate your certificate and the CA bundle into one file:
+
+cat your_domain_name.crt ca_bundle.crt > /etc/ssl/certs/combined.crt
+
+
+---------------
+Ensure the Private Key is in PEM Format:
+
+Make sure your private key (server.key) is in PEM format. If it’s not, you might need to convert it:
+
+openssl rsa -in your_private_key.key -out /etc/ssl/private/server.key
+
+check PEM format : 
+openssl rsa -in /etc/ssl/private/server.key -check
+
+
+----------------- settings -----------------
+smtpd_tls_cert_file = /etc/ssl/certs/combined.crt
+smtpd_tls_key_file = /etc/ssl/private/server.key
+smtpd_tls_CAfile = /etc/ssl/certs/ca_bundle.crt
+smtpd_tls_security_level = may
+smtpd_tls_loglevel = 1
+smtp_tls_security_level = may
+smtp_tls_loglevel = 1
