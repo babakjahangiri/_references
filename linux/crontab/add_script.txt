@@ -1,0 +1,8 @@
+
+- automatically add to crontab
+(crontab -l 2>/dev/null; echo "@reboot /path/to/my_script.sh") | crontab -
+
+- manually add to crontab
+@reboot /path/to/your_script.sh
+0 0 * * * /path/to/your_script.sh  , run every 24 hours
+
