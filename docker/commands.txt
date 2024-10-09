@@ -1,3 +1,15 @@
-Run Docker container 
+Run Docker container from ECR with .env file
 
 docker run -d  --env-file /home/ec2/.env -p 5050:8080 <aws id>.dkr.ecr.eu-west-1.amazonaws.com/<app_name>:dev-latest
+
+Other commands 
+
+sudo docker rmi
+sudo docker rm
+sudo docker ps -a
+sudo docker exec -it CONTAINER_HASH /bin/sh
+sudo docker logs CONTAINER_HASH
+sudo docker run -d CONTAINER_NAME:VERSION
+sudo docker build -t IMAGE_NAME:VERSION .
+sudo docker compose up -d
+sudo docker compose down
