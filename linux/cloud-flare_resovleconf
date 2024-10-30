@@ -1,0 +1,4 @@
+sudo nano /etc/resolv.conf
+
+nameserver 1.1.1.1   # Cloudflare's primary DNS server
+nameserver 1.0.0.1   # Cloudflare's secondary DNS server

@@ -1,0 +1,11 @@
+
+DKIM record checker 
+----------------------
+https://easydmarc.com/tools/dkim-lookup
+
+
+Send Test Email (DKIM, SPF, SpamAssassin)
+------------------------------------------
+https://dkimvalidator.com/ 
+
+

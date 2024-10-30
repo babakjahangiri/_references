@@ -29,11 +29,33 @@ check PEM format :
 openssl rsa -in /etc/ssl/private/server.key -check
 
 
------------------ settings -----------------
-smtpd_tls_cert_file = /etc/ssl/certs/combined.crt
-smtpd_tls_key_file = /etc/ssl/private/server.key
-smtpd_tls_CAfile = /etc/ssl/certs/ca_bundle.crt
-smtpd_tls_security_level = may
-smtpd_tls_loglevel = 1
-smtp_tls_security_level = may
-smtp_tls_loglevel = 1
+check certificate is ok 
+------------------------
+openssl x509 -in your_certificate.crt -text -noout
+
+cehck expiration date
+----------------------
+openssl x509 -enddate -noout -in your_certificate.crt
+
+
+
+ Check the Certificate’s Subject and Issuer
+ --------------------------------------------
+ openssl x509 -subject -issuer -noout -in your_certificate.crt
+
+
+
+Verify the Certificate Chain
+-----------------------------
+openssl verify -CAfile your_ca_bundle.crt your_certificate.crt
+
+
+Check if the Certificate Matches the Private Key
+-------------------------------------------------
+openssl x509 -noout -modulus -in your_certificate.crt | openssl md5
+openssl rsa -noout -modulus -in your_private_key.key | openssl md5
+
+
+
+
+

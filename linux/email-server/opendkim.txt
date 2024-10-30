@@ -1,0 +1,62 @@
+Step-by-Step Guide to Configure Postfix with DKIM
+---------------
+
+sudo apt-get install opendkim opendkim-tools
+
+## Generate a DKIM Key Pair:
+Replace selector with your chosen DKIM selector and example.com with your domain name. This will generate two files
+
+sudo opendkim-genkey -t -s selector -d example.com
+
+
+Configure OpenDKIM:
+Edit the OpenDKIM Configuration File
+sudo nano /etc/opendkim.conf
+
+Add or update the following lines:
+AutoRestart             Yes
+AutoRestartRate         10/1h
+Syslog                  Yes
+SyslogSuccess           Yes
+LogWhy                  Yes
+UMask                   002
+Canonicalization        relaxed/simple
+Mode                    sv
+SubDomains              No
+OversignHeaders         From
+KeyTable                /etc/opendkim/key.table
+SigningTable            /etc/opendkim/signing.table
+ExternalIgnoreList      /etc/opendkim/trusted.hosts
+InternalHosts           /etc/opendkim/trusted.hosts
+
+
+
+-----------
+Cretae a key for OpenDKIM 
+------------
+
+sudo opendkim-genkey -b 2048 -d mail.domain.com -s default -a rsa -d /etc/opendkim/keys/domain_folder
+
+sudo opendkim-genkey -b 2048 -d domain.com -s s1 -a rsa -D /etc/opendkim/keys/domain.com -v
+----
+change permission of the key
+-------------
+
+sudo ls -l /etc/opendkim/keys/domain.com/email.private
+sudo chmod 600 /etc/opendkim/keys/domain.com/email.private
+sudo chown opendkim:opendkim /etc/opendkim/keys/domain.com/email.private
+
+------------------
+Verify TXT record
+-------------------
+dig TXT default._domainkey.mail.domain.com
+
+
+
+
+-------------
+test the key
+--------------
+selector: default
+sudo opendkim-testkey -d domain.com -s default -k /etc/opendkim/keys/domain.com/default.private -vv
+

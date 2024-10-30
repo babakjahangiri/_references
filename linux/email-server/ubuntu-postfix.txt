@@ -45,3 +45,16 @@ sudo chmod 600 /etc/postfix/sasl_passwd
 
 
 sudo systemctl restart postfix
+
+
+
+
+
+----------
+testsaslauthd -u username -p smtp_sasl_password
+
+ 
+
+
+ Ref : 
+ https://hostadvice.com/how-to/web-hosting/vps/how-to-setup-postfix-as-send-only-mail-server-on-an-ubuntu-18-04-dedicated-server-or-vps/

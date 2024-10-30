@@ -1,0 +1,8 @@
+
+
+
+Cyrus settigns for Authentication
+------------------------------------
+/etc/postfix/sasl/smtp.conf
+
+pwcheck_method: saslauthd | auxprop | shadow 
